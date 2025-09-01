@@ -1,103 +1,118 @@
 <%- include('./base/header.ejs') %>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info shadow-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold fs-3 text-success" href="#">RDEC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active px-3 text-success fw-semibold" href="/student/add/page">
-                            <i class="bi bi-person-plus-fill"></i>
-                            <h6>Add Student</h6>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 text-success fw-semibold" href="#">
-                            <i class="bi bi-list-ul"></i>
-                            <h6>List Student</h6>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <!-- Sidebar -->
+    <nav class="sidebar bg-info shadow-lg position-fixed top-0 start-0 vh-100 d-flex flex-column p-3">
+        <a class="navbar-brand fw-bold fs-1 text-success mb-4 text-center" href="#">RDEC</a>
+        <ul class="nav flex-column">
+            <a class="nav-link text-success fw-semibold d-flex align-items-center" href="/student/add/page">
+                <i class="bi bi-person-plus-fill me-3 fs-3"></i>
+                <span style="font-size: 1.5rem;">Add Student</span>
+            </a>
+            </li>
+            <li class="nav-item mb-7">
+                <a class="nav-link text-success fw-semibold d-flex align-items-center" href="#">
+                    <i class="bi bi-list-ul me-3 fs-2"></i> 
+                    <span style="font-size: 1.5rem;">Student List</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <!-- Main Container with Transparent Background -->
-    <div class="container shadow-lg p-5 mt-1 mb-1 rounded-4 position-relative text-dark"
-        style="background: url('https://wallpaperbat.com/img/9733919-how-to-create-user-routes-in-nodejs-a.png') no-repeat center center/cover; min-height: 600px; border-radius: 25px;">
+    <!-- Main Content -->
+    <div class="main-content" style="margin-left: 250px; padding: 20px;">
 
-        <!-- Transparent Overlay for Whole Container -->
-        <div class="position-absolute top-0 start-0 w-100 h-100 rounded-4"
-            style="background: rgba(255, 255, 255, 0.2); z-index: 0;"></div>
+        <!-- Main Container with Transparent Background -->
+        <div class="container shadow-lg p-5 mt-1 mb-1 rounded-4 position-relative text-dark"
+            style="background: url('https://wallpaperbat.com/img/9733919-how-to-create-user-routes-in-nodejs-a.png') no-repeat center center/cover; min-height: 600px; border-radius: 25px;">
 
-        <!-- Content -->
-        <div class="position-relative" style="z-index: 1;">
+            <!-- Transparent Overlay for Whole Container -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 rounded-4"
+                style="background: rgba(255, 255, 255, 0.2); z-index: 0;"></div>
 
-            <!-- Heading (Transparent Background) -->
-            <div class="text-center mb-4 p-3 rounded-3" style="background: rgba(255, 255, 255, 0.3);">
-                <h3 class="fw-bold text-light text-shadow">Student List ✨</h3>
-            </div>
+            <!-- Content -->
+            <div class="position-relative" style="z-index: 1;">
 
-            <!-- Table (Transparent Background) -->
-            <div class="table-responsive p-3 rounded-3" style="background: rgba(255, 255, 255, 0.3);">
-                <table
-                    class="table table-striped table-hover text-center align-middle rounded-3 overflow-hidden text-light">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Student Image</th>
-                            <th>Roll No</th>
-                            <th>Student Name</th>
-                            <th>Father's Name</th>
-                            <th>Course</th>
-                            <th>Branch</th>
-                            <th>Year</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% students.forEach((student)=> { %>
+                <!-- Heading -->
+                <div class="text-center mb-4 p-3 rounded-3" style="background: rgba(255, 255, 255, 0.3);">
+                    <h3 class="fw-bold text-light text-shadow">Student List ✨</h3>
+                </div>
+
+                <!-- Table -->
+                <div class="table-responsive p-3 rounded-3" style="background: rgba(255, 255, 255, 0.3);">
+                    <table
+                        class="table table-striped table-hover text-center align-middle rounded-3 overflow-hidden text-light">
+                        <thead class="table-dark">
                             <tr>
-                                <td><img src=" <%= student.studentImage %>" width="50px" height="50px"></img></td>
-                                <td>
-                                    <%= student.rollNo %>
-                                </td>
-                                <td>
-                                    <%= student.studentName %>
-                                </td>
-                                <td>
-                                    <%= student.fatherName %>
-                                </td>
-                                <td>
-                                    <%= student.course %>
-                                </td>
-                                <td>
-                                    <%= student.branch %>
-                                </td>
-                                <td>
-                                    <%= student.yearofAdmisson %>
-                                </td>
-                                <td>
-                                    <a href="/edit/student/page/<%= student._id %>" class="btn btn-warning btn-sm me-2">
-                                        <img src="https://cdn-icons-png.flaticon.com/512/6325/6325975.png" alt="Edit"
-                                            style="width:30px; height:30px; margin-right:1px;">
-                                    </a>
-
-                                    <a href="/delete/student/<%= student._id %>" class="btn btn-danger btn-sm me-2">
-                                        <!-- <i class="bi bi-trash"></i> Delete -->
-                                        <img src="https://thumbs.dreamstime.com/z/delete-icon-trendy-delete-logo-concept-white-background-delete-icon-trendy-delete-logo-concept-white-background-131173572.jpg"
-                                            alt="Edit" style="width:30px; height:30px; margin-right:1px;">
-                                    </a>
-                                </td>
+                                <th>Student Image</th>
+                                <th>Roll No</th>
+                                <th>Student Name</th>
+                                <th>Father's Name</th>
+                                <th>Course</th>
+                                <th>Branch</th>
+                                <th>Year</th>
+                                <th>Actions</th>
                             </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <% students.forEach((student)=> { %>
+                                <tr>
+                                    <td><img src=" <%= student.studentImage %>" width="50px" height="50px"></td>
+                                    <td>
+                                        <%= student.rollNo %>
+                                    </td>
+                                    <td>
+                                        <%= student.studentName %>
+                                    </td>
+                                    <td>
+                                        <%= student.fatherName %>
+                                    </td>
+                                    <td>
+                                        <%= student.course %>
+                                    </td>
+                                    <td>
+                                        <%= student.branch %>
+                                    </td>
+                                    <td>
+                                        <%= student.yearofAdmisson %>
+                                    </td>
+                                    <td>
+                                        <a href="/edit/student/page/<%= student._id %>"
+                                            class="btn btn-warning btn-sm me-2">
+                                            <img src="https://cdn-icons-png.flaticon.com/512/6325/6325975.png"
+                                                alt="Edit" style="width:30px; height:30px; margin-right:1px;">
+                                        </a>
+                                        <a href="/delete/student/ <%= student._id %>"
+                                            class="btn btn-danger btn-sm me-2">
+                                            <img src="https://thumbs.dreamstime.com/z/delete-icon-trendy-delete-logo-concept-white-background-delete-icon-trendy-delete-logo-concept-white-background-131173572.jpg"
+                                                alt="Delete" style="width:30px; height:30px; margin-right:1px;">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <%- include('./base/footer.ejs') %>
+
+        <!-- Custom CSS for Sidebar -->
+        <style>
+            .sidebar {
+                width: 250px;
+            }
+
+            @media (max-width: 992px) {
+                .sidebar {
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                }
+
+                .main-content {
+                    margin-left: 0;
+                }
+            }
+        </style>
