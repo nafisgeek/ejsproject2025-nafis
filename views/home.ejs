@@ -1,0 +1,49 @@
+<%- include('./base/header.ejs') %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height:100vh;">
+  <!-- Main Card with Custom Black Shadow -->
+  <div class="card rounded-4 overflow-hidden"
+       style="max-width: 800px; width: 100%; box-shadow: 0 8px 30px rgba(0,0,0,0.7);">
+
+    <div class="row g-0">
+      <!-- Left Half (Login Form) -->
+      <div class="col-md-6 bg-white p-4 d-flex flex-column justify-content-center">
+        <div class="text-center mb-4">
+          <h3 class="fw-bold text-success">Welcome Back 👋</h3>
+          <p class="text-muted">Login to continue</p>
+        </div>
+        <form action="/login" method="post">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" name="email" placeholder="Enter your email" class="form-control rounded-3" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Password</label>
+            <input type="password" name="password" placeholder="Enter your password" class="form-control rounded-3" required>
+          </div>
+          <button type="submit" class="btn btn-success w-100 rounded-3 fw-bold shadow-sm">Login</button>
+        </form>
+        <hr>
+        <div class="text-center">
+          <p class="mb-2">Don’t have an account?</p>
+          <a href="/user/signup" class="btn btn-outline-danger w-100 rounded-3 fw-bold shadow-sm">Sign Up</a>
+        </div>
+      </div>
+
+      <!-- Right Half (Image Section) -->
+      <div class="col-md-6 d-flex align-items-center justify-content-center bg-light text-primary p-4">
+        <div class="text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+               alt="Project Logo"
+               class="img-fluid mb-3"
+               style="max-width: 180px;">
+          <h2 class="fw-bold text-primary">Server Side Rendering</h2>
+          <h5 class="fw-semibold">Node.js and EJS Project</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('./base/footer.ejs') %>

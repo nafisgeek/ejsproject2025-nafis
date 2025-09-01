@@ -1,0 +1,104 @@
+<%- include('./base/header.ejs') %>
+<%- include('./base/nav.ejs') %>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
+    <div class="card shadow-lg p-4 rounded-4" style="max-width: 600px; width: 100%;">
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-primary">Add Student ✨</h3>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col"></div> 
+                <div class="col">
+                    <form action="/add/student" method="post" enctype="multipart/form-data">
+                        
+                        <!-- Roll No -->
+                        <div>
+                            <label class="form-label">Roll No</label>
+                            <input type="text" placeholder="Roll No" class="form-control" name="rollNo" required>
+                        </div>
+
+                        <!-- Student Name -->
+                        <div>
+                            <label class="form-label">Student Name</label>
+                            <input type="text" placeholder="Student Name" class="form-control" name="studentName" required>
+                        </div>
+
+                        <!-- Father's Name -->
+                        <div>
+                            <label class="form-label">Father's Name</label>
+                            <input type="text" placeholder="Father's Name" class="form-control" name="fatherName" required>
+                        </div>
+
+                        <!-- Course Dropdown -->
+                        <div>
+                            <label class="form-label">Course</label>
+                            <select class="form-control" name="course" id="course" required>
+                                <option value="">Select Course</option>
+                                <option value="MCA">MCA</option>
+                                <option value="MBA">MBA</option>
+                                <option value="B-Tech">B-Tech</option>
+                            </select>
+                        </div>
+
+                        <!-- Branch Dropdown (Dynamic) -->
+                        <div>
+                            <label class="form-label">Branch</label>
+                            <select class="form-control" name="branch" id="branch" required>
+                                <option value="">Select Branch</option>
+                            </select>
+                        </div>
+
+                        <!-- Admission Year Dropdown -->
+                        <div>
+                            <label class="form-label">Admission Year</label>
+                            <select class="form-control" name="yearofAdmisson" required>
+                                <option value="">Select Year</option>
+                                <option value="2020-21">2020-21</option>
+                                <option value="2021-22">2021-22</option>
+                                <option value="2022-23">2022-23</option>
+                                <option value="2023-24">2023-24</option>
+                                <option value="2024-25">2024-25</option>
+                                <option value="2025-26">2025-26</option>
+                            </select>
+                        </div>
+                        <!-- Admission Year Dropdown -->
+                        <div>
+                            <label class="form-label">Select Student Image</label>
+                            <input type="file" placeholder="Select Student Image" class="form-control" name="studentImage" required>
+                        </div>
+
+                        <input type="submit" value="Add Student" class="btn btn-secondary w-100 my-2">
+                    </form>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const courseSelect = document.getElementById('course');
+    const branchSelect = document.getElementById('branch');
+
+    courseSelect.addEventListener('change', function () {
+        const selectedCourse = this.value;
+        branchSelect.innerHTML = '<option value="">Select Branch</option>'; // reset options
+
+        if (selectedCourse === 'MCA') {
+            branchSelect.innerHTML += '<option value="MCA">MCA</option>';
+        } else if (selectedCourse === 'MBA') {
+            branchSelect.innerHTML += '<option value="MBA">MBA</option>';
+        } else if (selectedCourse === 'B-Tech') {
+            branchSelect.innerHTML += `
+                <option value="CSE">CSE</option>
+                <option value="AI/ML">AI/ML</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+            `;
+        }
+    });
+</script>
+
+<%- include('./base/footer.ejs') %>

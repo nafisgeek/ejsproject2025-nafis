@@ -1,0 +1,119 @@
+<%- include('./base/header.ejs') %>
+    <%- include('./base/nav.ejs') %>
+
+        <div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
+            <div class="card shadow-lg p-4 rounded-4" style="max-width: 600px; width: 100%;">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-primary">Edit Student ✨</h3>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <form action="/edit/student/<%= student._id %>" method="post">
+
+                                <!-- Roll No -->
+                                <div>
+                                    <label class="form-label">Roll No</label>
+                                    <input type="text" placeholder="Roll No" class="form-control" name="rollNo"
+                                        value="<%= student.rollNo %>" required>
+                                </div>
+
+                                <!-- Student Name -->
+                                <div>
+                                    <label class="form-label">Student Name</label>
+                                    <input type="text" placeholder="Student Name" class="form-control"
+                                        name="studentName" value="<%= student.studentName %>" required>
+                                </div>
+
+                                <!-- Father's Name -->
+                                <div>
+                                    <label class="form-label">Father's Name</label>
+                                    <input type="text" placeholder="Father's Name" class="form-control"
+                                        name="fatherName" value="<%= student.fatherName %>" required>
+                                </div>
+
+                                <!-- Course Dropdown -->
+                                <div>
+                                    <label class="form-label">Course</label>
+                                    <select class="form-control" name="course" id="course" required>
+                                        <option value="">Select Course</option>
+                                        <option value="MCA" <%=student.course==='MCA' ? 'selected' : '' %>>MCA</option>
+                                        <option value="MBA" <%=student.course==='MBA' ? 'selected' : '' %>>MBA</option>
+                                        <option value="B-Tech" <%=student.course==='B-Tech' ? 'selected' : '' %>>B-Tech
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <!-- Branch Dropdown (Dynamic) -->
+                                <div>
+                                    <label class="form-label">Branch</label>
+                                    <select class="form-control" name="branch" id="branch" required>
+                                        <option value="">Select Branch</option>
+                                    </select>
+                                </div>
+
+                                <!-- Admission Year Dropdown -->
+                                <div>
+                                    <label class="form-label">Admission Year</label>
+                                    <select class="form-control" name="yearofAdmisson" required>
+                                        <option value="">Select Year</option>
+                                        <option value="2020-21" <%=student.yearofAdmisson==='2020-21' ? 'selected' : ''
+                                            %>>2020-21</option>
+                                        <option value="2021-22" <%=student.yearofAdmisson==='2021-22' ? 'selected' : ''
+                                            %>>2021-22</option>
+                                        <option value="2022-23" <%=student.yearofAdmisson==='2022-23' ? 'selected' : ''
+                                            %>>2022-23</option>
+                                        <option value="2023-24" <%=student.yearofAdmisson==='2023-24' ? 'selected' : ''
+                                            %>>2023-24</option>
+                                        <option value="2024-25" <%=student.yearofAdmisson==='2024-25' ? 'selected' : ''
+                                            %>>2024-25</option>
+                                        <option value="2025-26" <%=student.yearofAdmisson==='2025-26' ? 'selected' : ''
+                                            %>>2025-26</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" value="Edit Student" class="btn btn-secondary w-100 my-2">
+                            </form>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const courseSelect = document.getElementById('course');
+            const branchSelect = document.getElementById('branch');
+
+            const selectedCourse = "<%= student.course %>";
+            const selectedBranch = "<%= student.branch %>";
+
+            // Populate branches based on selected course
+            function populateBranches(course) {
+                branchSelect.innerHTML = '<option value="">Select Branch</option>';
+                if (course === 'MCA') {
+                    branchSelect.innerHTML += '<option value="MCA">MCA</option>';
+                } else if (course === 'MBA') {
+                    branchSelect.innerHTML += '<option value="MBA">MBA</option>';
+                } else if (course === 'B-Tech') {
+                    branchSelect.innerHTML += `
+                <option value="CSE">CSE</option>
+                <option value="AI/ML">AI/ML</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+            `;
+                }
+            }
+
+            // Initialize on page load
+            populateBranches(selectedCourse);
+            branchSelect.value = selectedBranch;
+            // Update branches when course changes
+            courseSelect.addEventListener('change', function () {
+                populateBranches(this.value);
+            });
+        </script>
+
+        <%- include('./base/footer.ejs') %>

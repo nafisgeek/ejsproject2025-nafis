@@ -1,0 +1,40 @@
+<%- include('./base/header.ejs') %>
+    <%- include('./base/nav.ejs') %>
+
+        <div class="container d-flex justify-content-center align-items-center" style="min-height:90vh;">
+            <div class="card shadow-lg p-4 rounded-4" style="max-width: 600px; width: 100%;">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-danger">Delete Student ❌</h3>
+                    <p class="text-muted">Enter student details to delete from database</p>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <form action="/delete/student" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label">Student RollNo</label>
+                                    <input type="text" placeholder="Student RollNo" class="form-control" name="rpllNo"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" placeholder="Enter Email" class="form-control" name="email"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" placeholder="Password" class="form-control" name="password"
+                                        required>
+                                </div>
+                                <input type="submit" value="Delete Student" class="btn btn-danger w-100 my-2">
+                            </form>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('./base/footer.ejs') %>

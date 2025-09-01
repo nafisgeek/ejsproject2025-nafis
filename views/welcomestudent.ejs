@@ -1,0 +1,39 @@
+<%- include('./base/header.ejs') %>
+
+<div class="container-fluid">
+    <div class="row min-vh-100">
+
+        <!-- Left Sidebar Navbar -->
+        <div class="col-lg-3 col-md-4 col-12 p-3">
+            <div class="card shadow-lg rounded-4" style="height: 100%;">
+                <div class="card-header bg-info text-center text-success fw-bold fs-5">
+                    Student Menu
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/student/profile" class="list-group-item list-group-item-action">
+                        <i class="bi bi-person-circle me-2"></i>Profile
+                    </a>
+                    <a href="/student/settings" class="list-group-item list-group-item-action">
+                        <i class="bi bi-gear-fill me-2"></i>Settings
+                    </a>
+                    <a href="/student/settings" class="list-group-item list-group-item-action">
+                        <i class="bi bi-gear-fill me-2"></i>Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-lg-9 col-md-8 col-12 p-5" 
+             style="background: url('https://wallpaperbat.com/img/9733919-how-to-create-user-routes-in-nodejs-a.png') no-repeat center center/cover; border-radius: 15px; margin-top: 20px;">
+            
+            <div class="p-4 rounded-3" style="background: rgba(255,255,255,0.3);">
+                <h1 class="text-light text-shadow">Welcome Student Page ✨</h1>
+                <p class="text-light">Here you can manage your courses, view student lists, and access your profile.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include('./base/footer.ejs') %>
