@@ -35,7 +35,7 @@ async function addstudent(req, res) {
 
 async function deletestudent(req, res) {
     try {
-        const studentId = req.params._id;
+        const studentId = req.params._id.trim();
         // console.log(studentId, 'Deleted Student')
         await Student.deleteOne({ _id: studentId });
         let students = await Student.find({});
