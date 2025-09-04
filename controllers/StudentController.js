@@ -77,6 +77,7 @@ async function editstudent(req, res) {
             student.rollNo = req.body.rollNo
             student.studentName = req.body.studentName
             student.fatherName = req.body.fatherName
+            student.motherName = req.body.motherName
             student.course = req.body.course
             student.branch = req.body.branch
             student.yearofAdmisson = req.body.yearofAdmisson
