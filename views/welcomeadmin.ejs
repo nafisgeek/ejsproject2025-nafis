@@ -1,22 +1,36 @@
 <%- include('./base/header.ejs') %>
 
-    <!-- Sidebar -->
-    <nav class="sidebar bg-info shadow-lg position-fixed top-0 start-0 vh-100 d-flex flex-column p-3">
-        <a class="navbar-brand fw-bold fs-1 text-success mb-4 text-center" href="/">RDEC</a>
-        <ul class="nav flex-column">
-            <a class="nav-link text-success fw-semibold d-flex align-items-center" href="/student/add/page">
-                <i class="bi bi-person-plus-fill me-3 fs-3"></i>
-                <span style="font-size: 1.5rem;">Add Student</span>
-            </a>
-            </li>
-            <li class="nav-item mb-7">
-                <a class="nav-link text-success fw-semibold d-flex align-items-center" href="#">
-                    <i class="bi bi-list-ul me-3 fs-2"></i>
-                    <span style="font-size: 1.5rem;">Student List</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <nav class="sidebar bg-light shadow-lg position-fixed top-0 start-0 vh-100 d-flex flex-column p-4">
+  <!-- Brand -->
+  <a class="navbar-brand fw-bold fs-1 text-primary mb-5 text-center" href="/">
+    RDEC
+  </a>
+
+  <!-- Nav Buttons -->
+  <ul class="nav flex-column gap-3">
+    <li class="nav-item">
+      <a class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-start p-3 rounded-3 shadow-sm" href="/student/add/page">
+        <i class="bi bi-person-plus-fill me-3 fs-3"></i>
+        <span class="fs-5">Add Student</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-start p-3 rounded-3 shadow-sm" href="#">
+        <i class="bi bi-list-ul me-3 fs-3"></i>
+        <span class="fs-5">Student List</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-start p-3 rounded-3 shadow-sm" href="/">
+        <i class="bi bi-list-ul me-3 fs-3"></i>
+        <span class="fs-5">Logout</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
     <!-- Main Content -->
     <div class="main-content" style="margin-left: 250px; padding: 20px;">
@@ -110,6 +124,7 @@
 
             @media (max-width: 992px) {
                 .sidebar {
+                    background-color: blue;
                     position: relative;
                     width: 100%;
                     height: auto;
